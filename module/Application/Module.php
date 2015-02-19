@@ -9,8 +9,10 @@
 
 namespace Application;
 
+use Zend\Feed\Reader\Collection\Category;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Navigation\Page\Mvc;
 
 class Module
 {
@@ -19,6 +21,17 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        $eventManager->setIdentifiers(
+            __CLASS__
+        );
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], 100);
+    }
+
+    public function onDispatch(MvcEvent $e)
+    {
+        $viewModel = $e->getViewModel();
+        $viewModel->setVariable('categories',['PHP', 'JAVA', 'C#', 'C++']);
     }
 
     public function getConfig()
