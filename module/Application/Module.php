@@ -31,7 +31,9 @@ class Module
     public function onDispatch(MvcEvent $e)
     {
         $viewModel = $e->getViewModel();
-        $viewModel->setVariable('categories',['PHP', 'JAVA', 'C#', 'C++']);
+        $application = $e->getApplication();
+        $sm = $application->getServiceManager();
+        $viewModel->setVariable('categories',$sm->get('categories'));
     }
 
     public function getConfig()
