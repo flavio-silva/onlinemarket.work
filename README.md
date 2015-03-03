@@ -1,7 +1,7 @@
-MÓDULO 4
+MÓDULO 5
 ========
 
-M4Ex1
+M5EX1
 -----
 
 ### Eventos no arquivo module.php
