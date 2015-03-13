@@ -15,9 +15,7 @@ use Zend\View\Model\ViewModel;
 class IndexController extends AbstractActionController
 {
     public function indexAction()
-    {   
-
-    	echo 'Essa é action index do controller Index';
+    {
     	$messages = [];
     	if($this->flashMessenger()->hasMessages()) {    		
     		$messages = $this->flashMessenger()->getMessages();    		

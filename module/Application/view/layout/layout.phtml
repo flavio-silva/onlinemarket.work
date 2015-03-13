@@ -44,8 +44,8 @@
             </div>
         </nav>
         <div class="container">
-            <div class="col-lg-2">
-                <?php #$this->htmlList($this->categories)?>
+            <div class="col-lg-2">            
+                <?= $this->categories ? $this->htmlList($this->categories) : 'No category'?>
             </div>
             <div class="col-lg-8"><?php echo $this->content; ?></div>
             <hr>
