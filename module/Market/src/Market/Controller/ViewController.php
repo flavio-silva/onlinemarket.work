@@ -10,7 +10,9 @@ class ViewController extends AbstractActionController
 {
 	public function indexAction()
 	{
-		$category = $this->params()->fromQuery('category');
+		echo 'Essa é a action index do controller ViewController';
+		$category = $this->params()
+						->fromRoute('param');
 		
 		return new ViewModel([
 			'category' => $category
@@ -19,9 +21,9 @@ class ViewController extends AbstractActionController
 	
 	public function itemAction()
 	{
+		echo 'Essa é a action item do controller ViewController';
 		$item = $this->params()
-					->fromQuery('itemId');
-		
+					->fromRoute('param');
 		if(empty($item)) {
 			$this->flashMessenger()->addMessage('Item Not Found');
 			$this->redirect()->toRoute('market');

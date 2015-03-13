@@ -33,7 +33,7 @@ class Module
         $viewModel = $e->getViewModel();
         $application = $e->getApplication();
         $sm = $application->getServiceManager();
-        $viewModel->setVariable('categories',$sm->get('categories'));
+        $viewModel->setVariable('categories', $sm->get('categories'));
     }
 
     public function getConfig()

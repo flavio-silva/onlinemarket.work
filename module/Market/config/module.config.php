@@ -2,11 +2,11 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'market-index-controller' => 'Market\Controller\IndexController',
-        	'market-view-controller' => 'Market\Controller\ViewController'
+            'market-controller-index' => 'Market\Controller\IndexController',
+        	'market-controller-view' => 'Market\Controller\ViewController'
         ),
     	'factories' => array(
-			'market-post-controller' => 'Market\Factory\PostControllerFactory'    	
+			'market-controller-post' => 'Market\Factory\PostControllerFactory'    	
     	),
     	'aliases' => [
     		'alt' => 'market-view-controller'
@@ -14,7 +14,50 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'market' => array(
+        	'market' => array(
+        		'type' => 'segment',
+        		'options' => array(
+        			'route' => '/market[/]',
+        			'defaults' => array(
+        				'controller' => 'market-controller-index',
+        				'action' => 'index'
+        			)
+        		),
+        		'may_terminate' => true,
+        		'child_routes' => array(
+        			'controller-view' => array(
+        				'type' => 'segment',
+        				'options' => array(
+        					'route' => 'view[/][:action:][/]',
+        					'defaults' => array(
+        						'controller' => 'market-controller-view',
+        						'action' => 'index'
+        						
+        					)
+        				),
+        				'may_terminate' => true,
+        				'child_routes' => array(
+        					'param' => array(
+        						'type' => 'segment',
+        						'options' => array(
+        							'route' => '[:param:][/]',
+        						)
+        					),
+        				)
+        			),
+        			'controller-post' => array(
+        				'type' => 'segment',
+        				'options' => array(
+        					'route' => 'post[/][:action:]',
+        					'defaults' => array(
+        						'controller' => 'market-controller-post',
+        						'action' => 'index' 
+        					)
+        				)
+        			)
+        		)
+        	)   
+            /*'market' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     // Change this to something specific to your module
@@ -46,7 +89,7 @@ return array(
                         ),
                     ),
                 ),
-            ),
+            ),*/
         ),
     ),
     'view_manager' => array(
