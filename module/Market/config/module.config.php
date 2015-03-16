@@ -14,6 +14,16 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+        	'home' => array(
+        		'type' => 'Literal',        		
+        		'options' => array(
+        			'route' => '/',
+        			'defaults' => array(
+        				'controller' => 'market-controller-index',
+        				'action' => 'index'
+        			)
+        		)
+        	),
         	'market' => array(
         		'type' => 'segment',
         		'options' => array(
@@ -28,23 +38,32 @@ return array(
         			'controller-view' => array(
         				'type' => 'segment',
         				'options' => array(
-        					'route' => 'view[/][:action:][/]',
+        					'route' => 'view[/]',
         					'defaults' => array(
         						'controller' => 'market-controller-view',
         						'action' => 'index'
-        						
         					)
         				),
         				'may_terminate' => true,
         				'child_routes' => array(
-        					'param' => array(
+        					'default' => array(
         						'type' => 'segment',
         						'options' => array(
-        							'route' => '[:param:][/]',
+        							'route' => '[:action:][/:param]',
+        							'defaults' => array('action' => 'item')
         						)
         					),
+        					'main' => array(
+        						'type' => 'segment',
+        						'options' => array(
+        							'route' => 'main[/[:param:]]',
+        							'defaults' => array(
+        								
+        							)
+        						)
+        					)        					
         				)
-        			),
+        			),	
         			'controller-post' => array(
         				'type' => 'segment',
         				'options' => array(

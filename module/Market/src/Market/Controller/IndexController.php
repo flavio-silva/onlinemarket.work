@@ -15,14 +15,10 @@ use Zend\View\Model\ViewModel;
 class IndexController extends AbstractActionController
 {
     public function indexAction()
-    {
-    	$messages = [];
-    	if($this->flashMessenger()->hasMessages()) {    		
-    		$messages = $this->flashMessenger()->getMessages();    		
-    	}
-    	
+    {    	
+    	$messages = array('Welcome to the Online Market');
     	return new ViewModel([
-    		'messages' => $messages
+    		'messages' => array('Welcome to the Online Market')
     	]);
     }
 

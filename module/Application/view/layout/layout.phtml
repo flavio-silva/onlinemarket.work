@@ -45,7 +45,7 @@
         </nav>
         <div class="container">
             <div class="col-lg-2">            
-                <?= $this->categories ? $this->htmlList($this->categories) : 'No category'?>
+                <?= $this->categories ? $this->leftLinks($this->categories, $this->basePath('/market/view/main')) : 'No category'?>
             </div>
             <div class="col-lg-8"><?php echo $this->content; ?></div>
             <hr>
