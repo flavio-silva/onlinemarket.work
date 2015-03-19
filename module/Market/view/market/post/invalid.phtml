@@ -1,1 +1,5 @@
-<h3>One or more form inputs are invalid</h3>
+<?php
+$children = $this->viewModel()->getCurrent()->getChildren();
+$child = $children[0];
+?>
+<h3><?php var_dump($child->form->getInputFilter()->getMessages())?></h3>
