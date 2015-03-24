@@ -17,7 +17,12 @@ return array(
         'factories' => array(
             'market-post-form' => 'Market\Factory\PostFormFactory',
             'market-post-filter' => 'Market\Factory\PostFormFilterFactory',
-        )        
+        ),
+        'services' => array(
+            'days' => array(
+                1,2,3,4,5
+            )
+        )
     ),
     'router' => array(
         'routes' => array(

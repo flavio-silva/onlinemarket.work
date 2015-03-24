@@ -1,8 +1,69 @@
 <?php
-    $this->form->prepare();
-    echo $this->form()->openTag($this->form);
-    echo $this->formCollection($this->form);
-    echo $this->form()->closeTag($this->form);
-    
-    var_dump($this->categories);
- 
+	$form = $this->form;
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+	<label for="category" class="col-sm-2 control-label"><?= $this->formLabel($form->get('category'))?></label>
+	<div class="col-sm-10"><?=$this->formSelect($form->get('category'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="title" class="col-sm-2 control-label"><?=$this->formLabel($form->get('title'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('title'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="title" class="col-sm-2 control-label"><?=$this->formLabel($form->get('price'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('price'))?></div>
+</div>
+
+<div class="form-group">
+        <span class="col-sm-2 control-label"><?=$this->formLabel($form->get('date_expires'))?></span>
+		<div class="col-sm-10"><?=$this->formRadio($form->get('date_expires'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="description" class="col-sm-2 control-label"><?=$this->formLabel($form->get('description'))?></label>
+	<div class="col-sm-10"><?=$this->formTextArea($form->get('description'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="photo_filename" class="col-sm-2 control-label"><?=$this->formLabel($form->get('photo_filename'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('photo_filename'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="contact_name" class="col-sm-2 control-label"><?=$this->formLabel($form->get('contact_name'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('contact_name'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="contact_email" class="col-sm-2 control-label"><?=$this->formLabel($form->get('contact_email'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('contact_email'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="contact_phone" class="col-sm-2 control-label"><?=$this->formLabel($form->get('contact_phone'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('contact_phone'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="city_code" class="col-sm-2 control-label"><?=$this->formLabel($form->get('city_code'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('city_code'))?></div>
+</div>
+
+<div class="form-group">
+	<label for="delete_code" class="col-sm-2 control-label"><?=$this->formLabel($form->get('delete_code'))?></label>
+	<div class="col-sm-10"><?=$this->formInput($form->get('delete_code'))?></div>
+</div>
+
+<div class="form-group">
+    <span class="col-sm-2"></span>
+	<div class="col-sm-10"><?=$this->formCaptcha($form->get('captcha'))?></div>
+</div>
+
+<div class="form-group">
+    <span class="col-sm-2"></span>
+	<div class="col-sm-10"><?=$this->formInput($form->get('submit'))?></div>
+</div>
