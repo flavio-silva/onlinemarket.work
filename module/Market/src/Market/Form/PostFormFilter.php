@@ -62,7 +62,7 @@ class PostFormFilter extends InputFilter
         $contactPhone->setRequired(false);
         $contactPhone->getValidatorChain()
                        ->attach(new Validator\Regex('/[0-9]{0,32}/'));
-        $city = new Input('city');
+        $city = new Input('city_code');
         $city->setRequired(false);
         $city->getValidatorChain()
                 ->attach(new Validator\InArray());

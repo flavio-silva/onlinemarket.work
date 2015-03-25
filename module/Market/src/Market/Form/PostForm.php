@@ -89,11 +89,7 @@ class PostForm extends Form
                 ->setAttributes([
                     'class' => 'form-control'
                 ]);
-        $captcha = new Element\Captcha('captcha');
-        $captcha->setCaptcha(new \Zend\Captcha\Dumb())
-                    ->setAttributes([
-                        'class' => 'form-control'
-                    ]);
+        
         $submit = new Element\Submit('submit');
         $submit->setAttributes([
             'value' => 'Submit',
@@ -111,8 +107,8 @@ class PostForm extends Form
                 ->add($contactEmail)
                 ->add($contactPhone)
                 ->add($cityCode)
-                ->add($deleteCode)
-                ->add($captcha);
+                ->add($deleteCode);
+                
     }
     
     public function setCategories($categories) 
