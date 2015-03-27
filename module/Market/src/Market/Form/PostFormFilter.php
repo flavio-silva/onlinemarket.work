@@ -10,6 +10,7 @@ use Zend\Validator;
 class PostFormFilter extends InputFilter 
 {
     private $categories;
+    private $cityCode;
 
     public function buildFilter() 
     {
@@ -62,10 +63,11 @@ class PostFormFilter extends InputFilter
         $contactPhone->setRequired(false);
         $contactPhone->getValidatorChain()
                        ->attach(new Validator\Regex('/[0-9]{0,32}/'));
+        
         $city = new Input('city_code');
         $city->setRequired(false);
         $city->getValidatorChain()
-                ->attach(new Validator\InArray());
+                ->attach(new Validator\InArray(['haystack' => $this->cityCode]));
         
         $deleteCode = new Input('delete_code');
         $deleteCode->getValidatorChain()
@@ -88,5 +90,10 @@ class PostFormFilter extends InputFilter
     public function setCategories($categories) 
     {
         $this->categories = $categories;
+    }
+    
+    public function setCityCode($cityCode) 
+    {
+        $this->cityCode = $cityCode;
     }
 }

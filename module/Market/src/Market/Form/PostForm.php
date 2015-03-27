@@ -8,7 +8,7 @@ use Zend\Form\Element;
 class PostForm extends Form
 {
     private $categories;    
-    public $cityCodes = [];
+    static $cityCodes = ['001', '002', '003', '004', '005'];
     private $days;
 
     public function __construct()
@@ -78,12 +78,13 @@ class PostForm extends Form
         $contactPhone->setLabel('Contact Phone')
                         ->setAttributes([
                             'class' => 'form-control'
-                        ]);
+                        ]);        
         $cityCode = new Element\Select('city_code');
         $cityCode->setLabel('City Code')
                 ->setAttributes([
                    'class' => 'form-control'
-                ]);
+                ])
+                ->setValueOptions(array_combine(self::$cityCodes, self::$cityCodes));
         $deleteCode = new Element\Number('delete_code');
         $deleteCode->setLabel('Delete Code')
                 ->setAttributes([
