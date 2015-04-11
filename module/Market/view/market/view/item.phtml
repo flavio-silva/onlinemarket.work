@@ -1,1 +1,57 @@
-<h1><?=$this->item?></h1>
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="<?=$this->basePath() . $row->photo_filename ?>" />
+    </a>
+  </div>  
+</div>
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge"><?=$row->listings_id?></span>
+        Listings ID
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->category?></span>
+        Category
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->title?></span>
+        Title
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->date_created?></span>
+        Date Created
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->date_expires?></span>
+        Date Expires
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->description?></span>
+        Description
+    </li>
+    <li class="list-group-item">
+        <span class="badge"><?=$row->contact_name?></span>
+        Contact Name
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->contact_email?></span>
+        Contact Email
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->contact_phone?></span>
+        Contact Phone
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->city?></span>
+        City
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->country?></span>
+        Country
+    </li>    
+    <li class="list-group-item">
+        <span class="badge"><?=$row->price?></span>
+        Price
+    </li>    
+</ul>

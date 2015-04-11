@@ -1,11 +1,4 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Market\Controller;
 
@@ -14,18 +7,25 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    use ListingsTableTrait;
+    
     public function indexAction()
     {           
     	$messages = array('Welcome to the Online Market');
         
-        if($this->flashMessenger()->hasSuccessMessages()) {
+        if($this->flashMessenger()->hasMessages()) {
             $messages = [];
-            foreach($this->flashMessenger()->getSuccessMessages() as $message) {
+            foreach($this->flashMessenger()->getMessages() as $message) {
                 $messages[] = $message;
             }
         }
+        
+        $listingsTable = $this->getServiceLocator()->get('listings-table');
+        $row = $listingsTable->getMostRecentListing();
+        
     	return new ViewModel([
-    		'messages' => $messages
+    		'messages' => $messages,
+                'row' => $row
     	]);
     }
 

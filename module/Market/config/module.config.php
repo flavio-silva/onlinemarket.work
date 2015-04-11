@@ -2,12 +2,11 @@
 
 return array(
     'controllers' => array(
-        'invokables' => array(
-            'market-controller-index' => 'Market\Controller\IndexController',
-            'market-controller-view' => 'Market\Controller\ViewController'
-        ),
         'factories' => array(
-            'market-controller-post' => 'Market\Factory\PostControllerFactory'
+            'market-controller-post' => 'Market\Factory\PostControllerFactory',
+            'market-controller-index' => 'Market\Factory\IndexControllerFactory',
+            'market-controller-view' => 'Market\Factory\ViewControllerFactory',
+            'market-controller-delete' => 'Market\Factory\DeleteControllerFactory',
         ),
         'aliases' => [
             'alt' => 'market-view-controller'
@@ -17,6 +16,10 @@ return array(
         'factories' => array(
             'market-post-form' => 'Market\Factory\PostFormFactory',
             'market-post-filter' => 'Market\Factory\PostFormFilterFactory',
+            'listings-table' => 'Market\Factory\ListingsTableFactory',
+	    'world_city_area_codes-table' => 'Market\Factory\WorldCityAreaCodesTableFactory',
+            'market-delete-form' => 'Market\Factory\DeleteFormFactory',
+            'market-delete-filter' => 'Market\Factory\DeleteFilterFactory',
         ),
         'services' => array(
             'days' => array(
@@ -62,7 +65,7 @@ return array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '[:action:][/:param]',
-                                    'defaults' => array('action' => 'item')
+                                    'defaults' => array()
                                 )
                             ),
                             'main' => array(
@@ -84,42 +87,19 @@ return array(
                                 'action' => 'index'
                             )
                         )
+                    ),
+                    'controller-delete' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => 'delete[/][:action:]',
+                            'defaults' => array(
+                                'controller' => 'market-controller-delete',
+                                'action' => 'index'
+                            )
+                        )
                     )
                 )
             )
-        /* 'market' => array(
-          'type'    => 'Literal',
-          'options' => array(
-          // Change this to something specific to your module
-          'route'    => '/market',
-          'defaults' => array(
-          // Change this value to reflect the namespace in which
-          // the controllers for your module are found
-          #'__NAMESPACE__' => 'Market\Controller',
-          'controller'    => 'market-index-controller',
-          'action'        => 'index',
-          ),
-          ),
-          'may_terminate' => true,
-          'child_routes' => array(
-          // This route is a sane default when developing a module;
-          // as you solidify the routes for your module, however,
-          // you may want to remove it and replace it with more
-          // specific routes.
-          'default' => array(
-          'type'    => 'Segment',
-          'options' => array(
-          'route'    => '/[:controller[/:action]]',
-          'constraints' => array(
-          'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-          'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-          ),
-          'defaults' => array(
-          ),
-          ),
-          ),
-          ),
-          ), */
         ),
     ),
     'view_manager' => array(

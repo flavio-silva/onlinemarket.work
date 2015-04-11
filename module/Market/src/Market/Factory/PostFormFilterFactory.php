@@ -12,7 +12,8 @@ class PostFormFilterFactory implements FactoryInterface
     {        
         $postFormFilter = new PostFormFilter();
         $postFormFilter->setCategories(array_keys($serviceManager->get('categories')));
-        $postFormFilter->setCityCode(\Market\Form\PostForm::$cityCodes);
+	$worldCityCodesTable = $serviceManager->get('world_city_area_codes-table');
+        $postFormFilter->setCityCode(array_keys($worldCityCodesTable->getCodesForForm()));
         $postFormFilter->buildFilter();
         return $postFormFilter;
     }

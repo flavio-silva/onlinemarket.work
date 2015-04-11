@@ -1,2 +1,33 @@
 <h1><?=$this->escapeHtml(ucfirst($this->category))?></h1>
- 
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            
+            <th>Title</th>
+            <th>Price</th>
+            <th>Date Created</th>
+            <th>Date Expires</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <?php foreach($this->listOfItems as $item):?>
+    <tr class="<?php echo $this->cycle(array('active', 'info'))
+                                                            ->next()?>">
+        <td>
+            <a href="<?= $this->url(
+                'market/controller-view/default',
+                ['action' => 'item', 'param' => $item->listings_id]
+                )?>">
+            <?= $this->escapeHtml($item->title)?>
+            </a>
+        </td>        
+        <td><?= $this->escapeHtml($item->price)?></td>
+        <td><?= $this->escapeHtml($item->date_created)?></td>
+        <td><?= $this->escapeHtml($item->date_expires)?></td>
+        <td><?= $this->escapeHtml($item->city)?></td>
+        <td><?= $this->escapeHtml($item->country)?></td>
+    </tr>
+    <?php endforeach;?>
+</table>

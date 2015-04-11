@@ -1,0 +1,19 @@
+<?php
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <label for="delete_code" class="col-sm-2 control-label"><?= $this->formLabel($form->get('delete_code')) ?></label>
+    <div class="col-sm-10"><?= $this->formText($form->get('delete_code')) ?></div>
+</div>
+
+<div class="form-group">
+    <label for="item_id" class="col-sm-2 control-label"><?= $this->formLabel($form->get('item_id')) ?></label>
+    <div class="col-sm-10"><?= $this->formInput($form->get('item_id')) ?></div>
+</div>
+
+<div class="form-group">
+    <span class="col-sm-2"></span>
+	<div class="col-sm-10"><?=$this->formInput($form->get('submit'))?></div>
+</div>

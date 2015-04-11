@@ -36,7 +36,7 @@ class PostFormFilter extends InputFilter
         $price = new Input('price');
         $price->getValidatorChain(new Validator\Regex('/^[0-9]{1,10}[0-9]{2}$/'));
         
-        $dataExpires = new Input('data_expires');
+        $dataExpires = new Input('date_expires');
         $dataExpires->setRequired(false);
         $dataExpires->getValidatorChain()
                 ->attach(new Validator\Digits());

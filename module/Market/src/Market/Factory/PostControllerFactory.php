@@ -15,7 +15,10 @@ class PostControllerFactory implements FactoryInterface {
 
         $postController->setCategories($categories);
         $postController->setPostForm($serviceManager->get('market-post-form'));
+        $postController->setListingsTable($serviceManager->get('listings-table'));
+		
+	$cityCodeTable = $serviceManager->get('world_city_area_codes-table');
+	$postController->setCityCodeTable($cityCodeTable);
         return $postController;
     }
-
 }
