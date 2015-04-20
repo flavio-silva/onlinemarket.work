@@ -7,6 +7,7 @@ return array(
             'market-controller-index' => 'Market\Factory\IndexControllerFactory',
             'market-controller-view' => 'Market\Factory\ViewControllerFactory',
             'market-controller-delete' => 'Market\Factory\DeleteControllerFactory',
+            'market-controller-city_country' => 'Market\Factory\CityCountryControllerFactory',
         ),
         'aliases' => [
             'alt' => 'market-view-controller'
@@ -20,6 +21,8 @@ return array(
 	    'world_city_area_codes-table' => 'Market\Factory\WorldCityAreaCodesTableFactory',
             'market-delete-form' => 'Market\Factory\DeleteFormFactory',
             'market-delete-filter' => 'Market\Factory\DeleteFilterFactory',
+            'market-city_country-form' => 'Market\Factory\CityCountryFormFactory',
+            'market-city_country-filter' => 'Market\Factory\CityCountryFilterFactory'
         ),
         'services' => array(
             'days' => array(
@@ -94,6 +97,16 @@ return array(
                             'route' => 'delete[/][:action:]',
                             'defaults' => array(
                                 'controller' => 'market-controller-delete',
+                                'action' => 'index'
+                            )
+                        )
+                    ),
+                    'controller-city_country' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => 'citycountry[/][:action]',
+                            'defaults' => array(
+                                'controller' => 'market-controller-city_country',
                                 'action' => 'index'
                             )
                         )

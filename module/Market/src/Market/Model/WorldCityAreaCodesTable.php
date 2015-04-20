@@ -29,5 +29,12 @@ class WorldCityAreaCodesTable extends TableGateway
 		return $this->select(['id' => $id])
 			->current();
 	}
-
+        
+        public function addCityAndCountry($city, $country)
+        {
+            $this->insert([
+                'city' => $city,
+                'country' => $country
+            ]);
+        }
 }
